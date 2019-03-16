@@ -16,6 +16,7 @@ tarvitaan myös liitostaulu.
 Sovellus on saatavilla verkossa [Herokussa](https://verkkokirjakauppa.herokuapp.com/)
 
 Testitunnukset kirjautumista varten:
+
 Käyttäjätunnus: **hello**
 
 Salasana: **world**
