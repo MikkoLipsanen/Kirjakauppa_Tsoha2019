@@ -1,0 +1,16 @@
+Käyttäjänä pystyn lisäämään uuden kirjan tietokantaan.
+
+Käyttäjänä voin määrittää kirjalle seuraavat tiedot:
+	-nimi
+	-tekijä
+	-julkaisuvuosi
+	-hinta
+	-kieli
+	-saatavuus
+
+Käyttäjänä voin tarkastella tietokannassa olevien kirjojen tietoja.
+
+Käyttäjänä voin muokata tietokantaan talletettujen kirjojen saatavuustietoja.
+
+
+

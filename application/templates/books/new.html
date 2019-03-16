@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<form method="POST" action="{{ url_for('books_create') }}">
+  Nimi:<br>
+  <input type="text" name="title"/><br>
+  Kirjoittaja:<br>
+  <input type="text" name="author"/><br>
+  Julkaisuvuosi:<br>
+  <input type="number" name="year"/><br>
+  Kieli:<br>
+  <input type="text" name="language"/><br>
+  Hinta:<br>
+  <input type="number" step="0.01" name="price"/><br>
+  Varastossa:
+  <input type="checkbox" name="available" value="available" checked><br>
+  <br>
+  <input type="submit" value="Lisää kirja"/>
+</form>
+{% endblock %}
