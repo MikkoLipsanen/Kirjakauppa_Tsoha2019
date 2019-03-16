@@ -1,16 +1,21 @@
-from application import app, db
 from flask import redirect, render_template, request, url_for
+from flask_login import login_required
+
+from application import app, db
 from application.books.models import Book
+from application.books.forms import BookForm
 
 @app.route("/books", methods=["GET"])
 def books_index():
     return render_template("books/list.html", books = Book.query.all())
 
 @app.route("/books/new/")
+@login_required
 def books_form():
-    return render_template("books/new.html")
+    return render_template("books/new.html", form = BookForm())
 
 @app.route("/books/<book_id>/", methods=["POST"])
+@login_required
 def books_set_unavailable(book_id):
 
     b = Book.query.get(book_id)
@@ -25,12 +30,15 @@ def books_set_unavailable(book_id):
     return redirect(url_for("books_index"))
 
 @app.route("/books/", methods=["POST"])
+@login_required
 def books_create():
+    form = BookForm(request.form)
 
-    print("REQUEST: ", request.form)
-    b = Book(request.form.get('title'), request.form.get("author"), 
-    request.form.get("year"), request.form.get("language"), request.form.get("price"),
-    request.form.get("available"))
+    if not form.validate():
+        return render_template("books/new.html", form = form)
+        
+    b = Book(form.title.data, form.author.data, form.year.data, form.language.data, form.price.data,
+    form.available.data)
 
     db.session().add(b)
     db.session().commit()

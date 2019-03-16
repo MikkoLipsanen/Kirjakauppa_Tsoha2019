@@ -2,19 +2,94 @@
   
 {% block body %}
 <form method="POST" action="{{ url_for('books_create') }}">
-  Nimi:<br>
-  <input type="text" name="title"/><br>
-  Kirjoittaja:<br>
-  <input type="text" name="author"/><br>
-  Julkaisuvuosi:<br>
-  <input type="number" name="year"/><br>
-  Kieli:<br>
-  <input type="text" name="language"/><br>
-  Hinta:<br>
-  <input type="number" step="0.01" name="price"/><br>
-  Varastossa:
-  <input type="checkbox" name="available" value="available" checked><br>
-  <br>
-  <input type="submit" value="Lisää kirja"/>
+  <table>
+    <tr>
+      <td>
+        {{ form.title.label }}
+      </td>
+      <td>
+        {{ form.title }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.title.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>  
+    <tr>
+      <td>
+        {{ form.author.label }}
+      </td>
+      <td>
+        {{ form.author }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.author.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>  
+    <tr>
+      <td>
+        {{ form.year.label }}
+      </td>
+      <td>
+        {{ form.year }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.year.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.language.label }}
+      </td>
+      <td>
+        {{ form.language }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.language.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.price.label }}
+      </td>
+      <td>
+        {{ form.price }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.price.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.available.label }}
+      </td>
+      <td>
+        {{ form.available }}
+      </td>
+    </tr>  
+    <tr>
+      <td colspan="3">
+        <input type="submit" value="Lisää kirja"/>
+      </td>
+    </tr>    
 </form>
 {% endblock %}
