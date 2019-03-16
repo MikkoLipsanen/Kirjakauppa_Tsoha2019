@@ -17,6 +17,7 @@ Sovellus on saatavilla verkossa [Herokussa](https://verkkokirjakauppa.herokuapp.
 
 Testitunnukset kirjautumista varten:
 Käyttäjätunnus: **hello**
+
 Salasana: **world**
 
 
