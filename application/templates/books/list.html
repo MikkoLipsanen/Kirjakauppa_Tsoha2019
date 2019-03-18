@@ -1,6 +1,5 @@
 {% extends "layout.html" %}
 
-
 {% block body %}
   <table>
     <tr>
@@ -21,8 +20,13 @@
       <td>{{ book.available }}</td>
       <td>
         <form method="POST" action="{{ url_for('books_set_unavailable', 
-         book_id=book.id) }}">
+        book_id=book.id) }}">
           <input type="submit" value="Muuta saatavuus"/>
+        </form>
+      </td>
+      <td>
+        <form method="POST" action="{{ url_for('books_delete', book_id=book.id) }}">
+          <input type="submit" value="Poista kirja" />
         </form>
       </td>
     </tr>

@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<form method="POST" action="{{ url_for('users_create') }}">
+  <table>
+    <tr>
+      <td>
+        {{ form.name.label }}
+      </td>
+      <td>
+        {{ form.name }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.name.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>  
+    <tr>
+      <td>
+        {{ form.e_mail.label }}
+      </td>
+      <td>
+        {{ form.e_mail }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.e_mail.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>  
+    <tr>
+      <td>
+        {{ form.address.label }}
+      </td>
+      <td>
+        {{ form.address }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.address.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.username.label }}
+      </td>
+      <td>
+        {{ form.username }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.username.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.password.label }}
+      </td>
+      <td>
+        {{ form.password }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.password.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <input type="submit" value="Lisää käyttäjä"/>
+      </td>
+    </tr>    
+</form>
+{% endblock %}
