@@ -1,13 +1,34 @@
-from flask import redirect, render_template, request, url_for
+from flask import redirect, render_template, request, url_for, flash
 from flask_login import login_required
 
 from application import app, db
 from application.books.models import Book
-from application.books.forms import BookForm
+from application.books.forms import BookForm, BookSearchForm
 
-@app.route("/books", methods=["GET"])
+@app.route("/books", methods=['GET', 'POST'])
 def books_index():
-    return render_template("books/list.html", books = Book.query.all())
+    search = BookSearchForm(request.form)
+    if request.method == 'POST':
+        return search_results(search)
+    return render_template("books/list.html", books = Book.query.all(), form=search)
+
+@app.route("/books/results")
+def search_results(search):
+    results = []
+    search_string = search.data['search']
+
+    if search_string:
+        if search.data['select'] == 'Nimi':
+            qry = db.session().query(Book).filter(Book.title.contains(search_string))
+            results = qry.all()
+        elif search.data['select'] == 'Kirjoittaja':
+            qry = db.session().query(Book).filter(Book.author.contains(search_string))
+            results = qry.all()
+    if not results:
+        flash('Ei osumia')
+        return redirect(url_for("books_index"))
+    else:
+        return render_template("books/list.html", books = results, form=search)
 
 @app.route("/books/new/")
 @login_required

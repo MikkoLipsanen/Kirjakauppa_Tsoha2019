@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, DecimalField, BooleanField, validators
+from wtforms import Form, SelectField, StringField, IntegerField, DecimalField, BooleanField, validators
 
 class BookForm(FlaskForm):
     title = StringField("Nimi", [validators.Length(min=2)])
@@ -12,3 +12,10 @@ class BookForm(FlaskForm):
 
     class Meta:
         csrf = False
+
+class BookSearchForm(Form):
+    choices = [('Nimi', 'Nimi'),
+               ('Kirjoittaja', 'Kirjoittaja')]
+    select = SelectField('Etsi kirjaa:', choices=choices)
+    search = StringField('')
+

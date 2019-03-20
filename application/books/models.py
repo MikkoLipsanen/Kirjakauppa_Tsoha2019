@@ -16,3 +16,4 @@ class Book(db.Model):
         self.language = language
         self.price = price
         self.available = True
+
