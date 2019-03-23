@@ -50,6 +50,11 @@ def books_set_unavailable(book_id):
   
     return redirect(url_for("books_index"))
 
+@app.route("/book/", methods=["GET"])
+def book_view():
+    book_id = request.args.get("book_id")
+    return render_template('books/book.html', book = Book.query.get(book_id), form=BookForm())
+
 @app.route("/books/delete/<book_id>/", methods=["POST"])
 @login_required
 def books_delete(book_id):
@@ -76,3 +81,16 @@ def books_create():
     db.session().commit()
   
     return redirect(url_for("books_index"))
+
+@app.route("/books/edit/", methods=["GET", "POST"])
+def books_edit():
+    id = request.args.get("book_id")
+    print(id)
+    book = Book.query.get(id)
+    form = BookForm(obj=book)
+    if request.method == 'POST' and form.validate():
+        form.populate_obj(book)
+        db.session().commit()
+        flash('Kirjan tiedot paivitetty!')
+        return redirect(url_for("books_index"))
+    return render_template('books/edit.html', form=form)

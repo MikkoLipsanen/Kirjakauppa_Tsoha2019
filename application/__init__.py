@@ -1,6 +1,8 @@
 from flask import Flask
 app = Flask(__name__)
 
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 from flask_sqlalchemy import SQLAlchemy
 
 import os
@@ -32,7 +34,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 login_manager.login_view = "auth_login"
-login_manager.login_message = "Toiminto edellyttää kirjautumisen."
+login_manager.login_message = "Toiminto vaatii kirjautumisen."
 
 @login_manager.user_loader
 def load_user(user_id):

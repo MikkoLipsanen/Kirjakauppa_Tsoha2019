@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<form method="POST" action="{{ url_for('books_edit', book_id=request.args.get('book_id')) }}">
+  <table>
+    <tr>
+      <td>
+        {{ form.title.label }}
+      </td>
+      <td>
+        {{ form.title }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.title.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>  
+    <tr>
+      <td>
+        {{ form.author.label }}
+      </td>
+      <td>
+        {{ form.author }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.author.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>  
+    <tr>
+      <td>
+        {{ form.year.label }}
+      </td>
+      <td>
+        {{ form.year }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.year.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.language.label }}
+      </td>
+      <td>
+        {{ form.language }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.language.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.price.label }}
+      </td>
+      <td>
+        {{ form.price }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.price.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.available.label }}
+      </td>
+      <td>
+        {{ form.available }}
+      </td>
+    </tr>  
+    <tr>
+      <td colspan="3">
+        <input type="submit" value="Tallenna muutokset"/>
+      </td>
+    </tr>    
+</form>
+{% endblock %}

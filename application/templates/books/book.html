@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div>
+  <h1>{{ book.title }}</h1>
+    <table>
+	  <tr>
+		<td>Kirjoittaja</td>
+		<td>{{ book.author }}</td>
+	  </tr>
+	  <tr>
+		<td>Julkaisuvuosi</td>
+		<td>{{ book.year }}</td>
+	  </tr>
+	  <tr>
+		<td>Kieli</td>
+		<td>{{ book.language }}</td>
+      </tr>
+      <tr>
+        <td>Hinta</td>
+        <td>{{ book.price }}</td>
+      </tr>
+      <tr>
+        <td>Saatavilla</td>
+        <td>{{ book.available }}</td>
+      </tr>
+    </table>
+    <td colspan="3">
+      <div>
+        <a href="/books/edit?book_id={{request.args.get('book_id')}}">Muokkaa</a>
+      </div>
+    </td>
+</div>
+{% endblock %}

@@ -14,8 +14,8 @@ class BookForm(FlaskForm):
         csrf = False
 
 class BookSearchForm(Form):
-    choices = [('Nimi', 'Nimi'),
-               ('Kirjoittaja', 'Kirjoittaja')]
-    select = SelectField('Etsi kirjaa:', choices=choices)
+    choices = [("Nimi", "Nimi"),
+               ("Kirjoittaja", "Kirjoittaja")]
+    select = SelectField("Etsi kirjaa:", choices=choices)
     search = StringField('')
 

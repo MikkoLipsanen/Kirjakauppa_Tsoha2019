@@ -32,16 +32,15 @@
     </tr>
     {% for book in books %}
     <tr>
-      <td>{{ book.title }}</td>
+      <td><a href="/book?book_id={{ book.id }}">{{ book.title }}</a></td>
       <td>{{ book.author }}</td>
       <td>{{ book.year }}</td>
       <td>{{ book.language }}</td>
       <td>{{ book.price }}</td>
       <td>{{ book.available }}</td>
       <td>
-        <form method="POST" action="{{ url_for('books_set_unavailable', 
-        book_id=book.id) }}">
-          <input type="submit" value="Muuta saatavuus"/>
+        <form method="POST" action="{{ url_for('books_set_unavailable', book_id=book.id) }}">
+          <input type="submit" value="Muuta saatavuus" />
         </form>
       </td>
       <td>

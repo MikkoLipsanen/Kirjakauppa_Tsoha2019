@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField, validators
   
 class LoginForm(FlaskForm):
-    username = StringField("Käyttäjätunnus")
+    username = StringField("Kayttajatunnus")
     password = PasswordField("Salasana")
   
     class Meta:
@@ -10,9 +10,9 @@ class LoginForm(FlaskForm):
 
 class UserForm(FlaskForm):
     name = StringField("Nimi", [validators.Length(min=2)])
-    e_mail = StringField("Sähköposti", [validators.Length(min=4)])
+    e_mail = StringField("Sahkoposti", [validators.Length(min=4)])
     address = StringField("Osoite", [validators.Length(min=5)])
-    username = StringField("Käyttäjätunnus", [validators.Length(min=5)])
+    username = StringField("Kayttajatunnus", [validators.Length(min=5)])
     password = StringField("Salasana", [validators.Length(min=5)])
 
     class Meta:
