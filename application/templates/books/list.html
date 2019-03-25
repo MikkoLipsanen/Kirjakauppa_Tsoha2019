@@ -15,11 +15,12 @@
   <h2>Hae kirjaa</h2>
   <form method=post action="{{ url_for('books_index') }}">
     <dl>
-      {{ (form.select) }}
+      {{ form.select }}
       <p>
-      {{ (form.search) }}
+      {{ form.search }}
+      </p>
     </dl>
-  <p><input type=submit value=Etsi>
+  <p><input type="submit" value="Etsi">
   </form>
   <table>
     <tr>
