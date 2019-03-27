@@ -12,5 +12,8 @@ Käyttäjänä voin tarkastella tietokannassa olevien kirjojen tietoja.
 
 Käyttäjänä voin muokata tietokantaan talletettujen kirjojen saatavuustietoja.
 
+Käyttäjänä voin etsiä tietokannasta kirjoja nimen ja tekijän nimen perusteella.
+
+Käyttäjänä voin lisätä kirjoja ostoskoriin ja poistaa niitä sieltä.
 
 
