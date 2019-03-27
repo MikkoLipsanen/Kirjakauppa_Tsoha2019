@@ -44,3 +44,14 @@ def users_create():
     db.session().commit()
   
     return redirect(url_for("books_index"))
+
+@app.route("/user/edit/", methods=["GET", "POST"])
+def user_edit():
+    id = request.args.get("user_id")
+    user = User.query.get(id)
+    form = UserForm(obj=user)
+    if request.method == 'POST' and form.validate():
+        form.populate_obj(user)
+        db.session().commit()
+        return redirect(url_for("books_index"))
+    return render_template('auth/edit.html', form=form)

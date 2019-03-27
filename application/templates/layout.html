@@ -13,9 +13,8 @@
   <body>
     {% if current_user.is_authenticated %}
     <p>
-	    Kirjautunut nimellä {{ current_user.name }}. <a href="{{ url_for('auth_logout') }}">Kirjaudu ulos</a>
-    </p>
-    <p>
+      Kirjautunut nimellä {{ current_user.name }}. <a href="{{ url_for('auth_logout') }}">Kirjaudu ulos</a>
+      <a href="/user/edit?user_id={{ current_user.id }}">Muokkaa käyttäjätietoja</a>
       <a href="{{ url_for('cart_index') }}">Ostoskori</a>
     </p>
     {% else %}
