@@ -24,6 +24,9 @@ from application.books import views
 from application.auth import models 
 from application.auth import views
 
+from application.cart import models 
+from application.cart import views
+
 # kirjautuminen
 from application.auth.models import User
 from os import urandom

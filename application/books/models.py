@@ -1,4 +1,5 @@
 from application import db
+from sqlalchemy.orm import relationship
 
 class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -9,6 +10,8 @@ class Book(db.Model):
     price = db.Column(db.Float, nullable=False)
     available = db.Column(db.Boolean, nullable=False)
 
+    account = db.relationship("User", secondary="shopping_cart")
+
     def __init__(self, title, author, year, language, price, available):
         self.title = title
         self.author = author
@@ -16,4 +19,3 @@ class Book(db.Model):
         self.language = language
         self.price = price
         self.available = True
-

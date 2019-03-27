@@ -85,7 +85,6 @@ def books_create():
 @app.route("/books/edit/", methods=["GET", "POST"])
 def books_edit():
     id = request.args.get("book_id")
-    print(id)
     book = Book.query.get(id)
     form = BookForm(obj=book)
     if request.method == 'POST' and form.validate():

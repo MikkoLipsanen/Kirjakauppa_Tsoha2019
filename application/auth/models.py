@@ -1,4 +1,5 @@
 from application import db
+from sqlalchemy.orm import relationship
 
 class User(db.Model):
 
@@ -14,6 +15,8 @@ class User(db.Model):
     address = db.Column(db.String(200), nullable=False)
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
+
+    books = db.relationship("Book", secondary="shopping_cart")
 
     def __init__(self, name, e_mail, address, username, password):
         self.name = name
@@ -33,3 +36,4 @@ class User(db.Model):
 
     def is_authenticated(self):
         return True
+
