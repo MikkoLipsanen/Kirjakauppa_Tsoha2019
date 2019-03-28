@@ -8,9 +8,11 @@ Asiakas voi lisätä kirjoja ostoskoriin ja poistaa niitä sieltä, sekä tutkia
 Asiakas voi myös muokata omia asiakastietojaan. Työntekijä voi selata ja muokata kirjojen tietoja 
 sekä lisätä ja poistaa kirjoja järjestelmästä. 
 
+Aloitussivulla on listattuna kolme kullakin hetkellä suosituinta kirjaa, mitattuna sillä mitä kirjoja
+on eniten asiakkaiden ostoskoreissa.
+
 Käyttäjälle on yksi tietokantataulu, jossa on yhtenä attribuuttina status (asiakas/työntekijä). Oma tietokantataulunsa
-on myös ostoskorille ja kirjalle. Kirjan ja ostoskorin välillä vallitsee monesta moneen-suhde, joten niitä yhdistämään 
-tarvitaan myös liitostaulu.
+on myös kirjalle, ja ostoskori on näiden välinen liitostaulu.
 
 ## Linkkejä
 

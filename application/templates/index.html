@@ -1,7 +1,23 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <h1>
-    Tervetuloa verkkokirjakauppaan!
-  </h1>
+<h1>
+  Tervetuloa verkkokirjakauppaan!
+</h1>
+
+{% if recommendations is defined %}
+<h2>
+  Tämän hetken 3 suosituinta kirjaa:
+</h2>
+
+<ul>
+  {% for book in recommendations %}
+  <li>
+    {{book.title}} 
+  </li>
+  {% endfor %}
+</ul>
+
+{% endif %}
+
 {% endblock %}
