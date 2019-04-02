@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <h2>Asiakkaan {{ current_user.name }} tilaukset</h2>
+  <table>
+    <tr>
+      <th>Tilauksen tunnus</th>
+      <th>Tilattu</th>
+      <th>Hinta</th>
+    </tr>
+    {% for order in orders %}
+    <tr>
+      <td>{{ order.id }}</a></td>
+      <td>{{ order.date }}</td>
+      <td>{{ order.price }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <div>
+    <p><b>Tilauksia yhteensä:</b></p>
+    <div>{{ size }} kappaletta</div>
+  </div>
+  <div>
+    <p><b>Hinta yhteensä:</b></p>
+    <div>{{ sum }} euroaa</div>
+  </div>
+{% endblock %}

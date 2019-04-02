@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<form method="POST" action="{{ url_for('order_create') }}">
+  <div>
+    <h1>Kirjatilaus</h1>
+  </div>
+  <div>
+    <h2>Asiakastiedot</h2>
+  </div>
+  <table>
+    <tr>
+      <td>
+        {{ form.name.label }}
+      </td>
+      <td>
+        {{ form.name }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.name.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>  
+    <tr>
+      <td>
+        {{ form.e_mail.label }}
+      </td>
+      <td>
+        {{ form.e_mail }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.e_mail.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>  
+    <tr>
+      <td>
+        {{ form.address.label }}
+      </td>
+      <td>
+        {{ form.address }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.address.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+  </table>
+  <div>
+    <h2>Tilatut kirjat</h2>
+  </div>
+  <table>
+    <tr>
+      <th>Nimi</th>
+      <th>Kirjoittaja</th>
+      <th>Julkaisuvuosi</th>
+      <th>Kieli</th>
+      <th>Hinta</th>
+    </tr>
+    {% for book in books %}
+    <tr>
+      <td>{{ book.title }}</a></td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.year }}</td>
+      <td>{{ book.language }}</td>
+      <td>{{ book.price }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <div>
+      <p><b>Kokonaishinta:</b></p>
+      <div>{{ price }} </div>
+    </div>
+    <tr>
+      <td colspan="3">
+        <input type="submit" value="Vahvista tilaus"/>
+      </td>
+    </tr>    
+</form>
+{% endblock %}

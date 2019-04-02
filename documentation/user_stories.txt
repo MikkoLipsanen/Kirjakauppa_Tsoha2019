@@ -16,4 +16,9 @@ Käyttäjänä voin etsiä tietokannasta kirjoja nimen ja tekijän nimen peruste
 
 Käyttäjänä voin lisätä kirjoja ostoskoriin ja poistaa niitä sieltä.
 
+Käyttäjänä voin tilata ostoskoriin valitsemani kirjat.
+
+Käyttäjänä voin muokta tilauksen yhteystietoja.
+
+Käyttäjänä voin tarkastella listaa aiemmista tilauksistani. 
 

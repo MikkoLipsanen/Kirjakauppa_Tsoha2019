@@ -5,14 +5,16 @@
 Harjoitustyössä toteutetaan verkkokirjakaupan karsittu versio. Käyttäjä voi olla joko asiakas tai työntekijä. 
 Asiakas voi etsiä kaupan valikoimissa olevia kirjoja kirjoittajan tai teoksen nimen perusteella.
 Asiakas voi lisätä kirjoja ostoskoriin ja poistaa niitä sieltä, sekä tutkia ostoskorin sisältöä. 
+Asiakas voi myös tehdä tilauksen, joka sisältää asiakkaan yhteystiedot ja tiedon tilatuista kirjoista.
 Asiakas voi myös muokata omia asiakastietojaan. Työntekijä voi selata ja muokata kirjojen tietoja 
 sekä lisätä ja poistaa kirjoja järjestelmästä. 
 
-Aloitussivulla on listattuna kolme kullakin hetkellä suosituinta kirjaa, mitattuna sillä mitä kirjoja
-on eniten asiakkaiden ostoskoreissa.
+Aloitussivulla on listattuna kolme kullakin hetkellä suosituinta kirjaa, mitattuna tilausmäärillä.
 
 Käyttäjälle on yksi tietokantataulu, jossa on yhtenä attribuuttina status (asiakas/työntekijä). Oma tietokantataulunsa
-on myös kirjalle, ja ostoskori on näiden välinen liitostaulu.
+on myös kirjalle, ja ostoskori on näiden välinen monesta moneen-yhteyden toteuttava liitostaulu.
+Tilaus on oma tietokantataulunsa, ja koska tilauksen ja kirjan välillä vallitsee myös monesta moneen-
+suhde, on myös näiden välillä liitostaulu.
 
 ## Linkkejä
 

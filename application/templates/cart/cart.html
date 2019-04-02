@@ -28,6 +28,9 @@
   </table>
   <div>
     <p><b>Kokonaishinta:</b></p>
-    <div>{{ sum }} </div>
+    <div>{{ sum }} euroa</div>
   </div>
+  <form method="GET" action="{{ url_for('order_create') }}">
+      <input type="submit" value="Tee tilaus" />
+  </form>
 {% endblock %}
