@@ -25,7 +25,7 @@
         <td>{{ book.author }}</td>
         <td>{{ book.year }}</td>
         <td>{{ book.language }}</td>
-        <td>{{ book.price }}</td>
+        <td>{{ book.price }} €</td>
         <td>{{ book.available }}</td>
         <td>
           <form method="POST" action="{{ url_for('cart_delete', book_id=book.id) }}">
@@ -38,7 +38,7 @@
   </table>
   <div>
     <h3 class="h3 mb-3 font-weight-normal">Kokonaishinta</h3>
-    <div><b>{{ sum }}</b> euroa</div>
+    <div><b>{{ sum }}</b> €</div>
   </div>
   <br>
   <form method="GET" action="{{ url_for('order_create') }}">

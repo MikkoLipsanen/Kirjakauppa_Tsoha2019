@@ -19,7 +19,7 @@
         <tr>
           <td>{{ order.id }}</a></td>
           <td>{{ order.date }}</td>
-          <td>{{ order.price }}</td>
+          <td>{{ order.price }} €</td>
         </tr>
       </tbody>
     {% endfor %}
@@ -31,7 +31,7 @@
     <br>
     <div>
         <h4 class="h4 mb-4 font-weight-normal">Hinta yhteensä</h4>
-      <div><b>{{ sum }}</b> euroaa</div>
+      <div><b>{{ sum }}</b> €</div>
     </div>
 </div>
 {% endblock %}

@@ -3,30 +3,30 @@
 {% block body %}
 <div class="container">
   <div class="jumbotron">
-    <div>
+    <div class="text-center">
       <h1 class="h1 mb-1 font-weight-normal">{{ book.title }}</h1>
       <br>
       <b>
-        <table>
-          <tr>
+        <table align="center">
+          <tr align="left">
             <td>Kirjoittaja</td>
-            <td>{{ book.author }}</td>
+            <td class="text-primary">{{ book.author }}</td>
           </tr>
-          <tr>
-            <td>Julkaisuvuosi</td>
-            <td>{{ book.year }}</td>
+          <tr align="left">
+            <td>Julkaistu</td>
+            <td class="text-primary">{{ book.year }}</td>
           </tr>
-          <tr>
+          <tr align="left">
             <td>Kieli</td>
-            <td>{{ book.language }}</td>
+            <td class="text-primary">{{ book.language }}</td>
           </tr>
-          <tr>
+          <tr align="left">
             <td>Hinta</td>
-            <td>{{ book.price }}</td>
+            <td class="text-primary">{{ book.price }} €</td>
           </tr>
-          <tr>
+          <tr align="left">
             <td>Saatavilla</td>
-            <td>{{ book.available }}</td>
+            <td class="text-primary">{{ book.available }}</td>
           </tr>
         </table>
       </b>
