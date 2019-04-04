@@ -11,7 +11,7 @@ class Book(db.Model):
     available = db.Column(db.Boolean, nullable=False)
 
     account = db.relationship("User", secondary="shopping_cart")
-    order = db.relationship("Order", secondary="order_item")
+    orders = db.relationship("Order", secondary="order_item")
 
     def __init__(self, title, author, year, language, price, available):
         self.title = title

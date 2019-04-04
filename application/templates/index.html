@@ -1,22 +1,18 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<h1>
-  Tervetuloa verkkokirjakauppaan!
-</h1>
-
-{% if recommendations is defined %}
-<h2>
-  Tämän hetken 3 suosituinta kirjaa:
-</h2>
-
-<ul>
+<div class="text-center">
+  <h1 class="text-primary">Tervetuloa kirjaostoksille!</h1>
+  {% if recommendations is defined %}
+  <br>
+  <h2>Tämän hetken 3 suosituinta kirjaa</h2>
+  <br>
   {% for book in recommendations %}
-  <li>
-    {{book.title}} 
-  </li>
-  {% endfor %}
-</ul>
+  <div class="list-group">
+    <a href="/book?book_id={{ book.id }}" class="list-group-item list-group-item-action"><b class="text-info">{{book.title}}</b></a>
+  </div>
+    {% endfor %}
+</div>
 
 {% endif %}
 

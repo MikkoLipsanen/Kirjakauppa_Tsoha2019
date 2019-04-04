@@ -1,27 +1,37 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <h2>Asiakkaan {{ current_user.name }} tilaukset</h2>
-  <table>
-    <tr>
-      <th>Tilauksen tunnus</th>
-      <th>Tilattu</th>
-      <th>Hinta</th>
-    </tr>
-    {% for order in orders %}
-    <tr>
-      <td>{{ order.id }}</a></td>
-      <td>{{ order.date }}</td>
-      <td>{{ order.price }}</td>
-    </tr>
+<div class="text-center">
+  <div>
+    <h1 class="h1 mb-1 font-weight-normal">Asiakkaan {{ current_user.name }} tilaukset</h1>
+  </div>
+  <br>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>Tilauksen tunnus</th>
+          <th>Tilattu</th>
+          <th>Hinta</th>
+        </tr>
+      </thead>
+      {% for order in orders %}
+      <tbody>
+        <tr>
+          <td>{{ order.id }}</a></td>
+          <td>{{ order.date }}</td>
+          <td>{{ order.price }}</td>
+        </tr>
+      </tbody>
     {% endfor %}
-  </table>
-  <div>
-    <p><b>Tilauksia yhteensä:</b></p>
-    <div>{{ size }} kappaletta</div>
-  </div>
-  <div>
-    <p><b>Hinta yhteensä:</b></p>
-    <div>{{ sum }} euroaa</div>
-  </div>
+    </table>
+    <div>
+      <h4 class="h4 mb-4 font-weight-normal">Tilauksia yhteensä</h4>
+      <div><b>{{ size }}</b> kappaletta</div>
+    </div>
+    <br>
+    <div>
+        <h4 class="h4 mb-4 font-weight-normal">Hinta yhteensä</h4>
+      <div><b>{{ sum }}</b> euroaa</div>
+    </div>
+</div>
 {% endblock %}

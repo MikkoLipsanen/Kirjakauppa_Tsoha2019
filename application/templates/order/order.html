@@ -5,6 +5,7 @@
   <div>
     <h1>Kirjatilaus</h1>
   </div>
+  <br>
   <div>
     <h2>Asiakastiedot</h2>
   </div>
@@ -56,34 +57,40 @@
     </tr>
   </table>
   <div>
+  <br>
     <h2>Tilatut kirjat</h2>
   </div>
-  <table>
-    <tr>
-      <th>Nimi</th>
-      <th>Kirjoittaja</th>
-      <th>Julkaisuvuosi</th>
-      <th>Kieli</th>
-      <th>Hinta</th>
-    </tr>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>Nimi</th>
+        <th>Kirjoittaja</th>
+        <th>Julkaisuvuosi</th>
+        <th>Kieli</th>
+        <th>Hinta</th>
+      </tr>
+    </thead>
     {% for book in books %}
-    <tr>
-      <td>{{ book.title }}</a></td>
-      <td>{{ book.author }}</td>
-      <td>{{ book.year }}</td>
-      <td>{{ book.language }}</td>
-      <td>{{ book.price }}</td>
-    </tr>
+    <tbody>
+      <tr>
+        <td>{{ book.title }}</a></td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.year }}</td>
+        <td>{{ book.language }}</td>
+        <td>{{ book.price }}</td>
+      </tr>
+    </tbody>
     {% endfor %}
-    </table>
-    <div>
-      <p><b>Kokonaishinta:</b></p>
-      <div>{{ price }} </div>
-    </div>
-    <tr>
-      <td colspan="3">
-        <input type="submit" value="Vahvista tilaus"/>
-      </td>
-    </tr>    
+  </table>
+  <div>
+    <p><b>Kokonaishinta:</b></p>
+    <div>{{ price }} </div>
+  </div> 
+  <br>   
+  <tr>
+    <td colspan="3">
+      <input type="submit" value="Vahvista tilaus"/>
+    </td>
+  </tr>    
 </form>
 {% endblock %}

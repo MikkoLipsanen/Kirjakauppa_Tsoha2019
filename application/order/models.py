@@ -30,7 +30,7 @@ class OrderItem(db.Model):
     book_id = db.Column(db.Integer, db.ForeignKey('book.id'), primary_key=True)
     order_id = db.Column(db.Integer, db.ForeignKey('order.id'), primary_key=True)
 
-    book = db.relationship("Book", backref='order_item')
-    order = db.relationship("Order", backref='order_item')
+    book = db.relationship("Book", backref=backref('order_item', cascade="all, delete-orphan"))
+    order = db.relationship("Order", backref=backref('order_item', cascade="all, delete-orphan"))
 
 

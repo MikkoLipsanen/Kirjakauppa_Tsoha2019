@@ -1,8 +1,12 @@
 {% extends "layout.html" %}
   
 {% block body %}
+<div class="text-center">
+  <br>
+    <h1 class="h1 mb-1 font-weight-normal">Muokkaa kirjan tietoja</h1>
+  <br>
 <form method="POST" action="{{ url_for('books_edit', book_id=request.args.get('book_id')) }}">
-  <table>
+  <table align="center">
     <tr>
       <td>
         {{ form.title.label }}
@@ -88,7 +92,8 @@
     </tr>  
     <tr>
       <td colspan="3">
-        <input type="submit" value="Tallenna muutokset"/>
+        <br>
+        <input type="submit" class="btn btn-outline-info" value="Tallenna muutokset"/>
       </td>
     </tr>    
 </form>

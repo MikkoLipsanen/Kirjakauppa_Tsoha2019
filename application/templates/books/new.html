@@ -1,8 +1,12 @@
 {% extends "layout.html" %}
   
 {% block body %}
+<div class="text-center">
+  <br>
+    <h1 class="h1 mb-1 font-weight-normal">Lisää uusi kirja</h1>
+  <br>
 <form method="POST" action="{{ url_for('books_create') }}">
-  <table>
+  <table align="center">
     <tr>
       <td>
         {{ form.title.label }}
@@ -88,7 +92,8 @@
     </tr>  
     <tr>
       <td colspan="3">
-        <input type="submit" value="Lisää kirja"/>
+        <br>
+        <input type="submit" class="btn btn-outline-info" value="Lisää kirja"/>
       </td>
     </tr>    
 </form>

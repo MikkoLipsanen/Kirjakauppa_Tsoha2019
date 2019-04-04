@@ -16,7 +16,7 @@ class Cart(db.Model):
 
     @staticmethod
     def recommendations():
-        stmt = text("SELECT Book.title FROM Book WHERE Book.id IN (SELECT book_id FROM order_item GROUP BY book_id ORDER BY COUNT(book_id) DESC LIMIT 3)")
+        stmt = text("SELECT Book.title, Book.id FROM Book WHERE Book.id IN (SELECT book_id FROM order_item GROUP BY book_id ORDER BY COUNT(book_id) DESC LIMIT 3)")
         res = db.engine.execute(stmt)
 
         return res

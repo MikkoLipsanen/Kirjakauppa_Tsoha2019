@@ -11,45 +11,56 @@
     </ul>
   {% endif %}
   {% endwith %}
-
-  <h2>Hae kirjaa</h2>
-  <form method=post action="{{ url_for('books_index') }}">
-    <dl>
-      {{ form.select }}
-      <p>
-      {{ form.search }}
-      </p>
-    </dl>
-  <p><input type="submit" value="Etsi">
-  </form>
-  <table>
-    <tr>
-      <th>Nimi</th>
-      <th>Kirjoittaja</th>
-      <th>Julkaisuvuosi</th>
-      <th>Kieli</th>
-      <th>Hinta</th>
-      <th>Saatavilla</th>
-    </tr>
+  <div class="text-center">
+    <h1 class="h1 mb-1 font-weight-normal">Hae kirjaa</h1>
+    <br>
+    <form class="form-signin" method=POST action="{{ url_for('books_index') }}">
+      <dl>
+        {{ form.select }}
+        <p>
+        <br>
+        {{ form.search }}
+        </p>
+      </dl>
+      <input type="submit" class="btn btn-outline-info" value="Etsi"/>
+    </form>
+    <br>
+  </div>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>Nimi</th>
+        <th>Kirjoittaja</th>
+        <th>Julkaisuvuosi</th>
+        <th>Kieli</th>
+        <th>Hinta</th>
+        <th>Saatavilla</th>
+        <th>Muuta saatavuus</th>
+        <th>Poista kirja</th>
+      </tr>
+    </thead>
+    
     {% for book in books %}
-    <tr>
-      <td><a href="/book?book_id={{ book.id }}">{{ book.title }}</a></td>
-      <td>{{ book.author }}</td>
-      <td>{{ book.year }}</td>
-      <td>{{ book.language }}</td>
-      <td>{{ book.price }}</td>
-      <td>{{ book.available }}</td>
-      <td>
-        <form method="POST" action="{{ url_for('books_set_unavailable', book_id=book.id) }}">
-          <input type="submit" value="Muuta saatavuus" />
-        </form>
-      </td>
-      <td>
-        <form method="POST" action="{{ url_for('books_delete', book_id=book.id) }}">
-          <input type="submit" value="Poista kirja" />
-        </form>
-      </td>
-    </tr>
+    <tbody>
+      <tr>
+        <td><a href="/book?book_id={{ book.id }}">{{ book.title }}</a></td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.year }}</td>
+        <td>{{ book.language }}</td>
+        <td>{{ book.price }}</td>
+        <td>{{ book.available }}</td>
+        <td>
+          <form method="POST" action="{{ url_for('books_set_unavailable', book_id=book.id) }}">
+            <input type="submit" class="btn btn-outline-primary" value="Muuta">
+          </form>
+        </td>
+        <td>
+          <form method="POST" action="{{ url_for('books_delete', book_id=book.id) }}">
+              <input type="submit" class="btn btn-outline-danger" value="Poista">
+          </form>
+        </td>
+      </tr>
+    </tbody>
     {% endfor %}
   </table>
 {% endblock %}
