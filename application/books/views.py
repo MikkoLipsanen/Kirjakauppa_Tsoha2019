@@ -83,6 +83,7 @@ def books_create():
     return redirect(url_for("books_index"))
 
 @app.route("/books/edit/", methods=["GET", "POST"])
+@login_required
 def books_edit():
     id = request.args.get("book_id")
     book = Book.query.get(id)
