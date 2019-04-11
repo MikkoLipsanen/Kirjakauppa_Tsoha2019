@@ -28,9 +28,13 @@
             </a>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="/user/edit?user_id={{ current_user.id }}">Muokkaa käyttäjätietoja</a>
+              {% if current_user.is_authenticated and current_user.has_role('CUSTOMER') %}
               <a class="dropdown-item" href="{{ url_for('cart_index') }}">Ostoskori</a>
               <a class="dropdown-item" href="{{ url_for('order_index') }}">Tilaukset</a>
-              <a class="dropdown-item" href="{{ url_for('books_form') }}">Lisää kirja</a>
+              {% endif %}
+              {% if current_user.is_authenticated and current_user.has_role('ADMIN') %}
+                <a class="dropdown-item" href="{{ url_for('books_form') }}">Lisää kirja</a>
+              {% endif %}
             </div>
           </li>
         </ul>

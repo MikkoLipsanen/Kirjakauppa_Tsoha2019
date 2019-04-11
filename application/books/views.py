@@ -1,7 +1,7 @@
 from flask import redirect, render_template, request, url_for, flash
-from flask_login import login_required
+from flask_login import current_user
 
-from application import app, db
+from application import app, db, login_required
 from application.books.models import Book
 from application.books.forms import BookForm, BookSearchForm
 
@@ -31,12 +31,12 @@ def search_results(search):
         return render_template("books/list.html", books = results, form=search)
 
 @app.route("/books/new/")
-@login_required
+@login_required(role="ADMIN")
 def books_form():
     return render_template("books/new.html", form = BookForm())
 
 @app.route("/books/<book_id>/", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def books_set_unavailable(book_id):
 
     b = Book.query.get(book_id)
@@ -56,7 +56,7 @@ def book_view():
     return render_template('books/book.html', book = Book.query.get(book_id), form=BookForm())
 
 @app.route("/books/delete/<book_id>/", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def books_delete(book_id):
     b = Book.query.get(book_id)
     db.session().delete(b)
@@ -67,7 +67,7 @@ def books_delete(book_id):
 
 
 @app.route("/books/", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def books_create():
     form = BookForm(request.form)
 
@@ -83,7 +83,7 @@ def books_create():
     return redirect(url_for("books_index"))
 
 @app.route("/books/edit/", methods=["GET", "POST"])
-@login_required
+@login_required(role="ADMIN")
 def books_edit():
     id = request.args.get("book_id")
     book = Book.query.get(id)

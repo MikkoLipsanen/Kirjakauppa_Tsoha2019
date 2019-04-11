@@ -1,11 +1,12 @@
 from application import db
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy import ForeignKey, Table, Column, Integer
+from sqlalchemy.sql import func
 
 class Order(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime, default=db.func.current_timestamp())
+    date = db.Column(db.DateTime(timezone=True), server_default=func.now())
     name = db.Column(db.String(144), nullable=False)
     e_mail = db.Column(db.String(144), nullable=False)
     address = db.Column(db.String(200), nullable=False)

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import PasswordField, StringField, validators
+from wtforms import PasswordField, StringField, RadioField, validators
   
 class LoginForm(FlaskForm):
     username = StringField("Käyttäjätunnus")
@@ -14,6 +14,7 @@ class UserForm(FlaskForm):
     address = StringField("Osoite", [validators.Length(min=5)])
     username = StringField("Käyttäjätunnus", [validators.Length(min=5)])
     password = StringField("Salasana", [validators.Length(min=5)])
+    role = RadioField("Rooli", choices=[("CUSTOMER","Asiakas"),("ADMIN","Työntekijä")])
 
     class Meta:
         csrf = False

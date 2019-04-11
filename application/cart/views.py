@@ -1,13 +1,13 @@
 from flask import redirect, render_template, request, url_for, flash
 from flask_login import login_required, current_user
 
-from application import app, db
+from application import app, db, login_required
 from application.books.models import Book
 from application.auth.models import User
 from application.cart.forms import CartForm
 
 @app.route("/cart", methods=['GET'])
-@login_required
+@login_required(role="CUSTOMER")
 def cart_index():
     user = User.query.get(current_user.get_id())
     form = CartForm(request.form)
@@ -16,7 +16,7 @@ def cart_index():
     return render_template("cart/cart.html", books=books, sum=totalPrice, form=form)
 
 @app.route("/cart/add/")
-@login_required
+@login_required(role="CUSTOMER")
 def cart_add():
     id = request.args.get("book_id")
     book = Book.query.get(id)
@@ -29,7 +29,7 @@ def cart_add():
     return redirect(url_for("books_index"))
 
 @app.route("/cart/delete/<book_id>/", methods=["POST"])
-@login_required
+@login_required(role="CUSTOMER")
 def cart_delete(book_id):
     book = Book.query.get(book_id)
     user = User.query.get(current_user.get_id())

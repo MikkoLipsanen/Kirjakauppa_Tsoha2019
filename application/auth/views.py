@@ -1,8 +1,8 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user 
 
-from application import app, db
-from application.auth.models import User
+from application import app, db, login_required
+from application.auth.models import User, Role
 from application.auth.forms import LoginForm
 from application.auth.forms import UserForm
 
@@ -39,6 +39,13 @@ def users_create():
         
     u = User(form.name.data, form.e_mail.data, form.address.data, form.username.data, 
     form.password.data)
+
+    role = Role.query.filter_by(name=form.role.data).first()
+    if not role:
+        role = Role(form.role.data)
+        db.session().add(role)
+
+    u.roles.append(role)
 
     db.session().add(u)
     db.session().commit()

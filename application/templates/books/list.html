@@ -37,8 +37,10 @@
         <th>Kieli</th>
         <th>Hinta</th>
         <th>Saatavilla</th>
-        <th>Muuta saatavuus</th>
-        <th>Poista kirja</th>
+        {% if current_user.is_authenticated and current_user.has_role('ADMIN') %}
+          <th>Muuta saatavuus</th>
+          <th>Poista kirja</th>
+        {% endif %}
       </tr>
     </thead>
     
@@ -51,6 +53,7 @@
         <td>{{ book.language }}</td>
         <td>{{ book.price }} €</td>
         <td>{{ book.available }}</td>
+        {% if current_user.is_authenticated and current_user.has_role('ADMIN') %}
         <td>
           <form method="POST" action="{{ url_for('books_set_unavailable', book_id=book.id) }}">
             <input type="submit" class="btn btn-outline-primary" value="Muuta">
@@ -61,6 +64,7 @@
               <input type="submit" class="btn btn-outline-danger" value="Poista">
           </form>
         </td>
+        {% endif %}
       </tr>
     </tbody>
     {% endfor %}

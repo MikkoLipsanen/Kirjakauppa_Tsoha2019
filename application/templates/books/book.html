@@ -33,8 +33,12 @@
       <br>
         <td colspan="3">
           <div>
-            <a href="/books/edit?book_id={{request.args.get('book_id')}}" class="btn btn-outline-primary" role="button">Muokkaa</a>
-            <a href="/cart/add?book_id={{request.args.get('book_id')}}" class="btn btn-outline-secondary" role="button">Lisää ostoskoriin</a>
+              {% if current_user.is_authenticated and current_user.has_role('ADMIN') %}
+              <a href="/books/edit?book_id={{request.args.get('book_id')}}" class="btn btn-outline-primary" role="button">Muokkaa</a>
+              {% endif %}
+              {% if book.available and current_user.is_authenticated and current_user.has_role('CUSTOMER')%}
+              <a href="/cart/add?book_id={{request.args.get('book_id')}}" class="btn btn-outline-secondary" role="button">Lisää ostoskoriin</a>
+            {% endif %}
           </div>
         </td>
     </div>

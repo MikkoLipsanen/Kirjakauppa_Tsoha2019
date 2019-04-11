@@ -82,6 +82,12 @@
         </ul>
       </td>
     </tr>
+    {% for subfield in form.role %}
+    <tr>
+      <td>{{ subfield.label }}</td>
+      <td>{{ subfield }}</td>
+    </tr>
+   {% endfor %}
     <tr>
       <td colspan="3">
         <br>

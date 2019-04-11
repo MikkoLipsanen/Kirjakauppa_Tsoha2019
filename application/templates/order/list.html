@@ -12,16 +12,34 @@
           <th>Tilauksen tunnus</th>
           <th>Tilattu</th>
           <th>Hinta</th>
-        </tr>
+        </tr> 
       </thead>
       {% for order in orders %}
       <tbody>
-        <tr>
-          <td>{{ order.id }}</a></td>
+        <tr> 
+          <td>{{ order.id }}</td> 
           <td>{{ order.date }}</td>
           <td>{{ order.price }} €</td>
         </tr>
+      <thead class="thead-light">
+        <tr>
+            <th>Tilatut kirjat</th>
+          </tr>
+      </thead>
+      <thead>
+          <tr>
+            <th>Nimi</th>
+            <th>Kirjoittaja</th>
+            </tr>
+        </thead>
+      {% for book in order.books %}
+      <tbody>
+        <tr>
+          <td>{{ book.title }}</td> 
+          <td>{{ book.author }}</td>
+        </tr>
       </tbody>
+        {% endfor %}
     {% endfor %}
     </table>
     <div>
