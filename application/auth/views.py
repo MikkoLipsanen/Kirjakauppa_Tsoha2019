@@ -53,12 +53,15 @@ def users_create():
     return redirect(url_for("books_index"))
 
 @app.route("/user/edit/", methods=["GET", "POST"])
-@login_required
+@login_required()
 def user_edit():
     id = request.args.get("user_id")
     user = User.query.get(id)
     form = UserForm(obj=user)
     if request.method == 'POST' and form.validate():
+        role = Role.query.filter_by(name=form.role.data).first()
+        user.roles.clear()
+        user.roles.append(role)
         form.populate_obj(user)
         db.session().commit()
         return redirect(url_for("books_index"))

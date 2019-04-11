@@ -7,6 +7,7 @@
   </div>
   <br>
     <table class="table">
+      {% for order in orders %}
       <thead class="thead-light">
         <tr>
           <th>Tilauksen tunnus</th>
@@ -14,22 +15,15 @@
           <th>Hinta</th>
         </tr> 
       </thead>
-      {% for order in orders %}
       <tbody>
         <tr> 
           <td>{{ order.id }}</td> 
           <td>{{ order.date }}</td>
           <td>{{ order.price }} €</td>
         </tr>
-      <thead class="thead-light">
-        <tr>
-            <th>Tilatut kirjat</th>
-          </tr>
-      </thead>
       <thead>
           <tr>
-            <th>Nimi</th>
-            <th>Kirjoittaja</th>
+            <th>Tilatut kirjat</th>
             </tr>
         </thead>
       {% for book in order.books %}
