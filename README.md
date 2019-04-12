@@ -24,25 +24,36 @@ jomman kumman luotaessa uutta käyttäjärofiilia. Statusta voi myös vaihtaa pr
 
 Aloita asennus kloonaamalla repositorio omalle koneellesi.
 
-```$ git clone git@github.com:MikkoLipsanen/Kirjakauppa_Tsoha2019.git
-$ cd Kirjakauppa_Tsoha2019```
+```
+$ git clone git@github.com:MikkoLipsanen/Kirjakauppa_Tsoha2019.git
+$ cd Kirjakauppa_Tsoha2019
+
+```
 
 Luo seuraavaksi Python-virtuaaliympäristö ja aktivoi se.
 
-```$ python3 -m venv venv
-$ source venv/bin/activate```
+```
+$ python3 -m venv venv
+$ source venv/bin/activate
+```
 
 Lataa sitten sovelluksen vaatimat riippuvuudet.
 
-```$ pip install -r requirements.txt```
+```
+$ pip install -r requirements.txt
+```
 
 Käynnistä sovellus komennolla
 
-```$ python run.py```
+```
+$ python run.py
+```
 
 Sovellus löytyy nyt  selaimella osoitteesta
 
-```http://localhost:5000```
+```
+http://localhost:5000
+```
 
 ## Käyttöohje
 
