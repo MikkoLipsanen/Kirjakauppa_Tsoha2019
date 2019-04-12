@@ -60,6 +60,9 @@ def user_edit():
     form = UserForm(obj=user)
     if request.method == 'POST' and form.validate():
         role = Role.query.filter_by(name=form.role.data).first()
+        if not role:
+            role = Role(form.role.data)
+            db.session().add(role)
         user.roles.clear()
         user.roles.append(role)
         form.populate_obj(user)

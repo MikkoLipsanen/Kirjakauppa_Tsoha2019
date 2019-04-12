@@ -6,7 +6,7 @@ from sqlalchemy.sql import func
 class Order(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    date = db.Column(db.Date, server_default=func.now())
     name = db.Column(db.String(144), nullable=False)
     e_mail = db.Column(db.String(144), nullable=False)
     address = db.Column(db.String(200), nullable=False)
