@@ -41,8 +41,10 @@
     <div><b>{{ sum }}</b> €</div>
   </div>
   <br>
+  {% if current_user.books %}
   <form method="GET" action="{{ url_for('order_create') }}">
     <input type="submit" class="btn btn-outline-info" value="Tee tilaus"/>
   </form>
+  {% endif %}
 </div>
 {% endblock %}
