@@ -1,6 +1,18 @@
-Käyttäjänä pystyn lisäämään uuden kirjan tietokantaan.
+Käyttäjänä voin tarkastella tietokannassa olevien kirjojen tietoja.
 
-Käyttäjänä voin määrittää kirjalle seuraavat tiedot:
+Käyttäjänä voin etsiä tietokannasta kirjoja nimen ja tekijän nimen perusteella.
+
+Käyttäjänä voin luoda profiilin ja rekisteröityä sovellukseen.
+
+Käyttäjänä voin valita statuksekseni joko asiakas tai työntekijä.
+
+Työntekijnä voin muokata tietokantaan talletettujen kirjojen saatavuustietoja.
+
+Työntekijänä pystyn lisäämään uuden kirjan tietokantaan.
+
+Työntekijänä pystyn poistamaan kirjan tietokannasta.
+
+Työntekijänä voin määrittää kirjalle seuraavat tiedot:
 	-nimi
 	-tekijä
 	-julkaisuvuosi
@@ -8,17 +20,12 @@ Käyttäjänä voin määrittää kirjalle seuraavat tiedot:
 	-kieli
 	-saatavuus
 
-Käyttäjänä voin tarkastella tietokannassa olevien kirjojen tietoja.
 
-Käyttäjänä voin muokata tietokantaan talletettujen kirjojen saatavuustietoja.
+Asiakkaana voin lisätä kirjoja ostoskoriin ja poistaa niitä sieltä.
 
-Käyttäjänä voin etsiä tietokannasta kirjoja nimen ja tekijän nimen perusteella.
+Asiakkaana voin tilata ostoskoriin valitsemani kirjat.
 
-Käyttäjänä voin lisätä kirjoja ostoskoriin ja poistaa niitä sieltä.
+Asiakkaana voin muokata tilauksen yhteystietoja.
 
-Käyttäjänä voin tilata ostoskoriin valitsemani kirjat.
-
-Käyttäjänä voin muokta tilauksen yhteystietoja.
-
-Käyttäjänä voin tarkastella listaa aiemmista tilauksistani. 
+Asiakkaana voin tarkastella listaa aiemmista tilauksistani. 
 
