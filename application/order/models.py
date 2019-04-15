@@ -2,6 +2,7 @@ from application import db
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy import ForeignKey, Table, Column, Integer
 from sqlalchemy.sql import func
+from datetime import date
 
 class Order(db.Model):
 
