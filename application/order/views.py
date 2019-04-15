@@ -28,7 +28,7 @@ def order_create():
         db.session().commit()
         return redirect(url_for("books_index"))
     else:
-        return render_template("order/order.html", books=books, price=totalPrice, form=form)
+        return render_template("order/order.html", books=books, price=format(totalPrice, '.2f'), form=form)
 
 @app.route("/orders", methods=['GET'])
 @login_required(role="CUSTOMER")
@@ -38,4 +38,4 @@ def order_index():
     orders = user.orders
     size = len(orders)
     price = sum(Order.price for Order in orders)
-    return render_template("order/list.html", orders=orders, form=form, size=size, sum=price)
+    return render_template("order/list.html", orders=orders, form=form, size=size, sum=format(price, '.2f'))

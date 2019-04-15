@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import SelectField, StringField,  DecimalField, IntegerField, DateField, validators
+from wtforms import SelectField, StringField,  DecimalField, IntegerField, DateTimeField, validators
 
 class OrderForm(FlaskForm):
     name = StringField("Nimi", [validators.Length(min=2)])
@@ -11,7 +11,7 @@ class OrderForm(FlaskForm):
 
 class OrdersForm(FlaskForm):
     id = IntegerField("Tunnus", [validators.InputRequired()])
-    date = DateField("Tilattu", [validators.InputRequired()])
+    date = DateTimeField("Tilattu", [validators.InputRequired()])
     price = DecimalField("Hinta", [validators.InputRequired()])
 
     class Meta:

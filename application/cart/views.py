@@ -13,7 +13,7 @@ def cart_index():
     form = CartForm(request.form)
     books = user.books
     totalPrice = sum(Book.price for Book in books)
-    return render_template("cart/cart.html", books=books, sum=totalPrice, form=form)
+    return render_template("cart/cart.html", books=books, sum=format(totalPrice, '.2f'), form=form)
 
 @app.route("/cart/add/")
 @login_required(role="CUSTOMER")

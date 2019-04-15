@@ -6,36 +6,38 @@
     <h1 class="h1 mb-1 font-weight-normal">Asiakkaan {{ current_user.name }} tilaukset</h1>
   </div>
   <br>
-    <table class="table">
-      {% for order in orders %}
-      <thead class="thead-light">
-        <tr>
-          <th>Tilauksen tunnus</th>
-          <th>Tilattu</th>
-          <th>Hinta</th>
-        </tr> 
-      </thead>
-      <tbody>
-        <tr> 
-          <td>{{ order.id }}</td> 
-          <td>{{ order.date }}</td>
-          <td>{{ order.price }} €</td>
-        </tr>
-      <thead>
+    <div class="container">
+      <table class="table">
+        {% for order in orders %}
+        <thead class="thead-light">
           <tr>
-            <th>Tilatut kirjat</th>
-            </tr>
+            <th>Tilauksen tunnus</th>
+            <th>Tilattu</th>
+            <th>Hinta</th>
+          </tr> 
         </thead>
-      {% for book in order.books %}
-      <tbody>
-        <tr>
-          <td>{{ book.title }}</td> 
-          <td>{{ book.author }}</td>
-        </tr>
-      </tbody>
-        {% endfor %}
-    {% endfor %}
-    </table>
+        <tbody>
+          <tr> 
+            <td>{{ order.id }}</td> 
+            <td>{{ order.date }}</td>
+            <td>{{ order.price }} €</td>
+          </tr>
+        <thead>
+            <tr>
+              <th>Tilatut kirjat</th>
+              </tr>
+          </thead>
+        {% for book in order.books %}
+        <tbody>
+          <tr>
+            <td>{{ book.title }}</td> 
+            <td>{{ book.author }}</td>
+          </tr>
+        </tbody>
+          {% endfor %}
+      {% endfor %}
+      </table>
+    </div>
     <div>
       <h4 class="h4 mb-4 font-weight-normal">Tilauksia yhteensä</h4>
       <div><b>{{ size }}</b> kappaletta</div>
