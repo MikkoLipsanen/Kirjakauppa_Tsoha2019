@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 
 {% block body %}
-{{ error }}
 <div class="text-center">
   <br>
     <h1 class="h1 mb-1 font-weight-normal">Kirjaudu sivulle</h1>
@@ -26,6 +25,11 @@
       <tr>
         <td>
           {{ form.password }}
+        </td>
+      </tr>
+      <tr>
+        <td class="text-danger">
+          {{ error }}
         </td>
       </tr>
       <tr>

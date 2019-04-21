@@ -3,7 +3,7 @@ from wtforms import SelectField, StringField,  DecimalField, IntegerField, DateT
 
 class OrderForm(FlaskForm):
     name = StringField("Nimi", [validators.Length(min=2)])
-    e_mail = StringField("Sahkoposti", [validators.Length(min=4)])
+    e_mail = StringField("Sahkoposti", [validators.Length(min=4), validators.Email()])
     address = StringField("Osoite", [validators.Length(min=5)])
 
     class Meta:

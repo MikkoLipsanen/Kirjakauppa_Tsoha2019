@@ -1,5 +1,6 @@
 from flask import render_template, request, redirect, url_for
 from flask_login import login_user, logout_user 
+from sqlalchemy.exc import IntegrityError
 
 from application import app, db, login_required
 from application.auth.models import User, Role
@@ -16,7 +17,7 @@ def auth_login():
     user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
     if not user:
         return render_template("auth/loginform.html", form = form,
-                               error = "Virheellinen kayttajanimi tai salasana")
+                               error = "Virheellinen käyttajänimi tai salasana")
 
     login_user(user)
     return redirect(url_for("index"))    
@@ -46,7 +47,6 @@ def users_create():
         db.session().add(role)
 
     u.roles.append(role)
-
     db.session().add(u)
     db.session().commit()
   
@@ -67,5 +67,6 @@ def user_edit():
         user.roles.append(role)
         form.populate_obj(user)
         db.session().commit()
+ 
         return redirect(url_for("books_index"))
     return render_template('auth/edit.html', form=form)
