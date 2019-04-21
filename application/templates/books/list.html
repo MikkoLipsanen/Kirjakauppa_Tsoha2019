@@ -36,6 +36,7 @@
         <th>Julkaisuvuosi</th>
         <th>Kieli</th>
         <th>Hinta</th>
+        <th>Kappalemäärä</th>
         <th>Saatavilla</th>
         {% if current_user.is_authenticated and current_user.has_role('ADMIN') %}
           <th>Muuta saatavuus</th>
@@ -52,6 +53,7 @@
         <td>{{ book.year }}</td>
         <td>{{ book.language }}</td>
         <td>{{ book.price }} €</td>
+        <td>{{ book.amount }} kpl</td>
         <td>{{ book.available }}</td>
         {% if current_user.is_authenticated and current_user.has_role('ADMIN') %}
         <td>

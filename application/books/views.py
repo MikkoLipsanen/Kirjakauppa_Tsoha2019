@@ -43,8 +43,10 @@ def books_set_unavailable(book_id):
 
     if b.available == False:
         b.available = True
+        b.amount = 1
     elif b.available == True:
         b.available = False
+        b.amount = 0
 
     db.session().commit()
   
@@ -74,7 +76,7 @@ def books_create():
     if not form.validate():
         return render_template("books/new.html", form = form)
         
-    b = Book(form.title.data, form.author.data, form.year.data, form.language.data, form.price.data,
+    b = Book(form.title.data, form.author.data, form.year.data, form.language.data, form.price.data, form.amount.data,
     form.available.data)
 
     db.session().add(b)
@@ -91,6 +93,6 @@ def books_edit():
     if request.method == 'POST' and form.validate():
         form.populate_obj(book)
         db.session().commit()
-        flash('Kirjan tiedot paivitetty!')
+        flash('Kirjan tiedot päivitetty!')
         return redirect(url_for("books_index"))
     return render_template('books/edit.html', form=form)

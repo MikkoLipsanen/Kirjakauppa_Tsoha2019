@@ -8,15 +8,17 @@ class Book(db.Model):
     year = db.Column(db.Integer, nullable=False)
     language = db.Column(db.String(20), nullable=False)
     price = db.Column(db.Float, nullable=False)
+    amount = db.Column(db.Integer, nullable=False)
     available = db.Column(db.Boolean, nullable=False)
 
     account = db.relationship("User", secondary="shopping_cart")
     orders = db.relationship("Order", secondary="order_item")
 
-    def __init__(self, title, author, year, language, price, available):
+    def __init__(self, title, author, year, language, price, amount, available):
         self.title = title
         self.author = author
         self.year = year
         self.language = language
         self.price = price
+        self.amount = amount
         self.available = True

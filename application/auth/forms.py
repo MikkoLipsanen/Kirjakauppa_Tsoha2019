@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField, RadioField, validators
 from application.auth.models import User
+from flask_login import current_user
 
 class LoginForm(FlaskForm):
     username = StringField("Käyttäjätunnus")
@@ -22,5 +23,7 @@ class UserForm(FlaskForm):
 
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
-        if user is not None:
-            raise validators.ValidationError('Käyttäjänimi on jo käytössä.')
+        if user is not None and current_user.is_authenticated and username.data != User.query.get(current_user.get_id()).username:
+            raise validators.ValidationError('Käyttätunnus on jo käytössä.')
+        elif user is not None and current_user.is_authenticated is False: 
+            raise validators.ValidationError('Käyttätunnus on jo käytössä.')

@@ -7,6 +7,7 @@ class BookForm(FlaskForm):
     year = IntegerField("Julkaisuvuosi", [validators.InputRequired()])
     language = StringField("Kieli", [validators.Length(min=3)])
     price = DecimalField("Hinta", [validators.InputRequired()])
+    amount = IntegerField("Kappalemäärä", [validators.InputRequired()])
     available = BooleanField("Varastossa", default="checked")
 
 

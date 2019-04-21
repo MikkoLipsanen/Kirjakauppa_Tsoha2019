@@ -21,6 +21,8 @@ def order_create():
         o.user_id = current_user.id
         for book in books:
             o.books.append(book)
+            item = Book.query.get(book.id)
+            item.amount -= 1 
         db.session().add(o)
         db.session().commit()
         user.books.clear()

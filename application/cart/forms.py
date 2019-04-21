@@ -7,7 +7,6 @@ class CartForm(FlaskForm):
     year = IntegerField("Julkaisuvuosi", [validators.InputRequired()])
     language = StringField("Kieli", [validators.Length(min=3)])
     price = DecimalField("Hinta", [validators.InputRequired()])
-    available = BooleanField("Varastossa", default="checked")
     total_price = DecimalField("Hinta", [validators.InputRequired()])
 
     class Meta:

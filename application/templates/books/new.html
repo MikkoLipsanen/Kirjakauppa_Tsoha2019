@@ -84,6 +84,21 @@
     </tr>
     <tr>
       <td>
+       {{ form.amount.label }}
+      </td>
+      <td> 
+        {{ form.amount }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.amount.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
         {{ form.available.label }}
       </td>
       <td>

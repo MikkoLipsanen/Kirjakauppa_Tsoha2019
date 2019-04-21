@@ -14,7 +14,6 @@
         <th>Julkaisuvuosi</th>
         <th>Kieli</th>
         <th>Hinta</th>
-        <th>Saatavilla</th>
         <th>Poista korista</th>
       </tr>
     </thead>
@@ -26,7 +25,6 @@
         <td>{{ book.year }}</td>
         <td>{{ book.language }}</td>
         <td>{{ book.price }} €</td>
-        <td>{{ book.available }}</td>
         <td>
           <form method="POST" action="{{ url_for('cart_delete', book_id=book.id) }}">
             <input type="submit" class="btn btn-outline-danger" value="Poista">
