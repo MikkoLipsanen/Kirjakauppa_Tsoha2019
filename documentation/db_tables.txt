@@ -1,0 +1,68 @@
+CREATE TABLE account (
+	id INTEGER NOT NULL, 
+	date_created DATETIME, 
+	date_modified DATETIME, 
+	name VARCHAR(144) NOT NULL, 
+	e_mail VARCHAR(144) NOT NULL, 
+	address VARCHAR(200) NOT NULL, 
+	username VARCHAR(144) NOT NULL, 
+	password VARCHAR(144) NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (username)
+)
+
+CREATE TABLE role (
+	id INTEGER NOT NULL, 
+	name VARCHAR(100) NOT NULL, 
+	PRIMARY KEY (id)
+)
+
+CREATE TABLE book (
+	id INTEGER NOT NULL, 
+	title VARCHAR(200) NOT NULL, 
+	author VARCHAR(150) NOT NULL, 
+	year INTEGER NOT NULL, 
+	language VARCHAR(20) NOT NULL, 
+	price FLOAT NOT NULL, 
+	amount INTEGER NOT NULL, 
+	available BOOLEAN NOT NULL, 
+	PRIMARY KEY (id), 
+	CHECK (available IN (0, 1))
+)
+
+CREATE TABLE user_role (
+	account_id INTEGER NOT NULL, 
+	role_id INTEGER NOT NULL, 
+	PRIMARY KEY (account_id, role_id), 
+	FOREIGN KEY(account_id) REFERENCES account (id), 
+	FOREIGN KEY(role_id) REFERENCES role (id)
+)
+
+CREATE TABLE shopping_cart (
+	book_id INTEGER NOT NULL, 
+	account_id INTEGER NOT NULL, 
+	PRIMARY KEY (book_id, account_id), 
+	FOREIGN KEY(book_id) REFERENCES book (id), 
+	FOREIGN KEY(account_id) REFERENCES account (id)
+)
+
+CREATE TABLE "order" (
+	id INTEGER NOT NULL, 
+	date DATETIME DEFAULT (CURRENT_TIMESTAMP), 
+	name VARCHAR(144) NOT NULL, 
+	e_mail VARCHAR(144) NOT NULL, 
+	address VARCHAR(200) NOT NULL, 
+	price FLOAT NOT NULL, 
+	user_id INTEGER NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES account (id)
+)
+
+CREATE TABLE order_item (
+	book_id INTEGER NOT NULL, 
+	order_id INTEGER NOT NULL, 
+	PRIMARY KEY (book_id, order_id), 
+	FOREIGN KEY(book_id) REFERENCES book (id), 
+	FOREIGN KEY(order_id) REFERENCES "order" (id)
+)
+

@@ -95,7 +95,7 @@ Salasana: **world**
 
 
 [Projektin alustava UML-kaavio](documentation/tietokantakaavio.jpg)
-
+[Tietokantataulut](documentation/db_tables.txt)
 [Käyttötapauksia](documentation/user_stories.txt)
 
      
