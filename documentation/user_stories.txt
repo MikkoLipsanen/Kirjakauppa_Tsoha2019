@@ -2,62 +2,62 @@
 
 SQL-kysely:SELECT book.id AS book_id, book.title AS book_title, book.author AS book_author,
 book.year AS book_year, book.language AS book_language, book.price AS book_price, 
-book.amount AS book_amount, book.available AS book_available FROM book
+book.amount AS book_amount, book.available AS book_available FROM book;
 
 -Käyttäjänä voin etsiä tietokannasta kirjoja nimen ja tekijän nimen perusteella.
 
 SQL-kysely: SELECT book.id AS book_id, book.title AS book_title, book.author AS book_author, 
 book.year AS book_year, book.language AS book_language, book.price AS book_price, 
 book.amount AS book_amount, book.available AS book_available FROM book 
-WHERE (book.title LIKE '% ? %')
+WHERE (book.title LIKE '% ? %');
 
-tai .... WHERE(book.author LIKE '% ? %')
+tai .... WHERE(book.author LIKE '% ? %');
 
 -Käyttäjänä näen kullakin hetkellä kolme myydyintä kirjaa kaupan aloitusivulla.
 
 SQL-kysely: SELECT Book.title, Book.id FROM Book WHERE Book.id IN 
-(SELECT book_id FROM order_item GROUP BY book_id ORDER BY COUNT(book_id) DESC LIMIT 3)
+(SELECT book_id FROM order_item GROUP BY book_id ORDER BY COUNT(book_id) DESC LIMIT 3);
 
 -Käyttäjänä voin luoda profiilin ja rekisteröityä sovellukseen.
 
 SQL-kysely:  INSERT INTO account (date_created, date_modified, name, e_mail, address, 
-username, password) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?, ?, ?)
+username, password) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?, ?, ?);
 
 -Käyttäjänä voin valita statuksekseni joko asiakas tai työntekijä.
 
-SQL-kysely: INSERT INTO user_role (account_id, role_id) VALUES (?, ?)
+SQL-kysely: INSERT INTO user_role (account_id, role_id) VALUES (?, ?);
 
 -Työntekijnä voin muokata tietokantaan talletettujen kirjojen saatavuustietoja.
 
-SQL-kysely: UPDATE book SET amount=?, available=? WHERE book.id = ?
+SQL-kysely: UPDATE book SET amount=?, available=? WHERE book.id = ?;
 
 -Työntekijänä pystyn lisäämään uuden kirjan tietokantaan.
 
 SQL-kysely: INSERT INTO book (title, author, year, language, price, amount, available) 
-VALUES (?, ?, ?, ?, ?, ?, ?)
+VALUES (?, ?, ?, ?, ?, ?, ?);
 
 -Työntekijänä pystyn poistamaan kirjan tietokannasta.
 
-SQL-kysely: DELETE FROM book WHERE book.id = ?
+SQL-kysely: DELETE FROM book WHERE book.id = ?;
 
 -Asiakkaana voin lisätä kirjoja ostoskoriin.
 
-SQL-kysely: INSERT INTO shopping_cart (book_id, account_id) VALUES (?, ?)
+SQL-kysely: INSERT INTO shopping_cart (book_id, account_id) VALUES (?, ?);
 
 -Asiakkaana voin poistaa kirjoja ostoskorista.
 
-SQL-kysely: DELETE FROM shopping_cart WHERE shopping_cart.book_id = ? AND shopping_cart.account_id = ?
+SQL-kysely: DELETE FROM shopping_cart WHERE shopping_cart.book_id = ? AND shopping_cart.account_id = ?;
 
 -Asiakkaana voin tilata ostoskoriin valitsemani kirjat.
 
 SQL-kyselyt: 
-UPDATE book SET amount=? WHERE book.id = ?
-INSERT INTO "order" (name, e_mail, address, price, user_id) VALUES (?, ?, ?, ?, ?)
-INSERT INTO order_item (book_id, order_id) VALUES (?, ?)
+UPDATE book SET amount=? WHERE book.id = ?;
+INSERT INTO "order" (name, e_mail, address, price, user_id) VALUES (?, ?, ?, ?, ?);
+INSERT INTO order_item (book_id, order_id) VALUES (?, ?);
 
 -Asiakkaana voin tarkastella listaa aiemmista tilauksistani. 
 
 SQL-kysely: SELECT "order".id AS order_id, "order".date AS order_date, "order".name AS order_name, 
 "order".e_mail AS order_e_mail, "order".address AS order_address, "order".price AS order_price, 
-"order".user_id AS order_user_id FROM "order" WHERE ? = "order".user_id
+"order".user_id AS order_user_id FROM "order" WHERE ? = "order".user_id;
 

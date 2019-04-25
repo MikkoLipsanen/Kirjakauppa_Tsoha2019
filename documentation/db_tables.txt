@@ -9,13 +9,13 @@ CREATE TABLE account (
 	password VARCHAR(144) NOT NULL, 
 	PRIMARY KEY (id), 
 	UNIQUE (username)
-)
+);
 
 CREATE TABLE role (
 	id INTEGER NOT NULL, 
 	name VARCHAR(100) NOT NULL, 
 	PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE book (
 	id INTEGER NOT NULL, 
@@ -28,7 +28,7 @@ CREATE TABLE book (
 	available BOOLEAN NOT NULL, 
 	PRIMARY KEY (id), 
 	CHECK (available IN (0, 1))
-)
+);
 
 CREATE TABLE user_role (
 	account_id INTEGER NOT NULL, 
@@ -36,7 +36,7 @@ CREATE TABLE user_role (
 	PRIMARY KEY (account_id, role_id), 
 	FOREIGN KEY(account_id) REFERENCES account (id), 
 	FOREIGN KEY(role_id) REFERENCES role (id)
-)
+);
 
 CREATE TABLE shopping_cart (
 	book_id INTEGER NOT NULL, 
@@ -44,7 +44,7 @@ CREATE TABLE shopping_cart (
 	PRIMARY KEY (book_id, account_id), 
 	FOREIGN KEY(book_id) REFERENCES book (id), 
 	FOREIGN KEY(account_id) REFERENCES account (id)
-)
+);
 
 CREATE TABLE "order" (
 	id INTEGER NOT NULL, 
@@ -56,7 +56,7 @@ CREATE TABLE "order" (
 	user_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(user_id) REFERENCES account (id)
-)
+);
 
 CREATE TABLE order_item (
 	book_id INTEGER NOT NULL, 
@@ -64,5 +64,5 @@ CREATE TABLE order_item (
 	PRIMARY KEY (book_id, order_id), 
 	FOREIGN KEY(book_id) REFERENCES book (id), 
 	FOREIGN KEY(order_id) REFERENCES "order" (id)
-)
+);
 

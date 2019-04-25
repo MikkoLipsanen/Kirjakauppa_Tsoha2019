@@ -1,7 +1,7 @@
 from application import db
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy import ForeignKey, Table, Column, Integer
-from sqlalchemy.sql import func
+from sqlalchemy.sql import func, text
 from datetime import date
 
 class Order(db.Model):
@@ -27,6 +27,13 @@ class Order(db.Model):
     class Meta:
         ordering = ('-date_created', )
 
+    @staticmethod
+    def recommendations():
+        stmt = text("SELECT Book.title, Book.id FROM Book WHERE Book.id IN (SELECT book_id FROM order_item GROUP BY book_id ORDER BY COUNT(book_id) DESC LIMIT 3)")
+        res = db.engine.execute(stmt)
+
+        return res
+
 class OrderItem(db.Model):
     __tablename__ = 'order_item'
     book_id = db.Column(db.Integer, db.ForeignKey('book.id'), primary_key=True)
@@ -34,5 +41,3 @@ class OrderItem(db.Model):
 
     book = db.relationship("Book", backref=backref('order_item', cascade="all, delete-orphan"))
     order = db.relationship("Order", backref=backref('order_item', cascade="all, delete-orphan"))
-
-

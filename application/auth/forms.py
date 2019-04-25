@@ -11,11 +11,11 @@ class LoginForm(FlaskForm):
         csrf = False
 
 class UserForm(FlaskForm):
-    name = StringField("Nimi", [validators.Length(min=2)])
-    e_mail = StringField("Sähkoposti", [validators.Length(min=4), validators.Email(message='Virheellinen sähköpostiosoite.')])
-    address = StringField("Osoite", [validators.Length(min=5)])
-    username = StringField("Käyttäjätunnus", [validators.Length(min=5)])
-    password = StringField("Salasana", [validators.Length(min=5)])
+    name = StringField("Nimi", [validators.DataRequired(message='Pakollinen kenttä'), validators.Length(min=2, max=40, message='Hyväksytty pituus 2-40 merkkiä.')])
+    e_mail = StringField("Sähkoposti", [validators.DataRequired(message='Pakollinen kenttä'), validators.Length(min=4, max=40, message='Hyväksytty pituus 4-40 merkkiä.'), validators.Email(message='Virheellinen sähköpostiosoite.')])
+    address = StringField("Osoite", [validators.DataRequired(message='Pakollinen kenttä'), validators.Length(min=5, max=100, message='Hyväksytty pituus 5-100 merkkiä.')])
+    username = StringField("Käyttäjätunnus", [validators.DataRequired(message='Pakollinen kenttä'), validators.Length(min=5, max=50, message='Hyväksytty pituus 5-50 merkkiä.')])
+    password = StringField("Salasana", [validators.Length(min=5, max=40, message='Hyväksytty pituus 5-40 merkkiä.')])
     role = RadioField("Rooli", choices=[("CUSTOMER","Asiakas"),("ADMIN","Työntekijä")])
 
     class Meta:
