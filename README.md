@@ -55,6 +55,32 @@ Sovellus löytyy nyt  selaimella osoitteesta
 http://localhost:5000
 ```
 
+Sovellus on mahdollista myös viedä pilvipalveluun, joista tässä käytetään esimerkkinä Herokua.
+Ennakkovaatimuksena on Herokun käyttäjätunnuksen luominen sekä Herokun komentorivityökalujen
+lataaminen omalle koneelle: lisätietoa löytyy [täältä](https://devcenter.heroku.com/articles/heroku-cli).
+
+Sovellukselle annetaan nimi ja luodaan paikka Herokussa komennolla
+
+```
+$ heroku create sovelluksen-nimi
+```
+
+Tämän jälkeen lisätään tieto sovellukselle Herokuun luodusta tilasta paikalliseen versionhallintaan
+
+```
+git remote add heroku https://git.heroku.com/sovelluksen-nimi.git
+```
+
+ja lopuksi lähetetään sovellus Herokuun
+
+```
+$ git add .
+$ git commit -m "Sovellus Herokuun"
+$ git push heroku master
+```
+
+Tämän jälkeen sovellus löytyy Herokun ilmoittamasta osoitteesta, joka riippuu sille annetusta nimestä.
+
 ## Käyttöohje
 
 Sovelluksen käyttö on hyvä aloittaa käyttäjäprofiilin luomisella. Tämä onnistuu klikkaamalla aloitussivun yläpalkista 
