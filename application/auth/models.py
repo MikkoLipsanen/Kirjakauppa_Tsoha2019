@@ -40,7 +40,6 @@ class User(db.Model):
     
     def has_role(self, role):
         return any(user_role.name == role for user_role in self.roles)
-        #return role in self.roles.name
 
 
 user_role = db.Table('user_role',

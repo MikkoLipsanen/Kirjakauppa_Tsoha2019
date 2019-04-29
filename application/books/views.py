@@ -8,9 +8,15 @@ from application.books.forms import BookForm, BookSearchForm
 @app.route("/books", methods=['GET', 'POST'])
 def books_index():
     search = BookSearchForm(request.form)
+    page = request.args.get("page", 1, type=int)
+    books = Book.query.paginate(page, 10, False)
+    next_url = url_for("books_index", page=books.next_num) \
+        if books.has_next else None
+    prev_url = url_for("books_index", page=books.prev_num) \
+        if books.has_prev else None
     if request.method == 'POST':
         return search_results(search)
-    return render_template("books/list.html", books = Book.query.all(), form=search)
+    return render_template("books/list.html", books=books.items, form=search, next_url=next_url, prev_url=prev_url)
 
 @app.route("/books/results")
 def search_results(search):

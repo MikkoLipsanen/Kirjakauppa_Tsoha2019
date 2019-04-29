@@ -18,5 +18,5 @@ class BookSearchForm(Form):
     choices = [("Nimi", "Nimi"),
                ("Kirjoittaja", "Kirjoittaja")]
     select = SelectField("Etsi kirjaa:", choices=choices)
-    search = StringField('')
+    search = StringField('', [validators.Length(max=60, message='Hakusanan maksimipituus 60 merkkiä')])
 

@@ -21,7 +21,7 @@ def cart_add():
     id = request.args.get("book_id")
     book = Book.query.get(id)
     user = User.query.get(current_user.get_id())
-    if book.amount > 0:       
+    if book.amount > 0:
         user.books.append(book)
         db.session.add(user)
         db.session.commit()

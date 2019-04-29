@@ -71,4 +71,10 @@
     </tbody>
     {% endfor %}
   </table>
+  {% if prev_url %}
+  <a href="{{ prev_url }}" class="btn btn-outline-info">Edellinen sivu</a>
+  {% endif %}
+  {% if next_url %}
+  <a href="{{ next_url }}" class="btn btn-outline-info">Seuraava sivu</a>
+  {% endif %}
 {% endblock %}
