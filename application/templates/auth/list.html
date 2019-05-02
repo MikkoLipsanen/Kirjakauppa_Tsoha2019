@@ -14,6 +14,7 @@
         <th>Käyttäjätunnus</th>
         <th>Rooli</th>
         <th>Tilaukset</th>
+        <th>Poista käyttäjä</th>
       </tr>
     </thead>
     {% for user in users %}
@@ -25,6 +26,11 @@
         <td>{{ user.username }}</td>
         <td>{{ user.roles[0].name }}</td>
         <td>{{ user.orders|length }}</td>
+        <td>
+          <form method="POST" action="{{ url_for('user_delete', user_id=user.id) }}">
+            <input type="submit" class="btn btn-outline-danger" value="Poista">
+          </form>
+        </td>
       </tr>
     </tbody>
     {% endfor %}
