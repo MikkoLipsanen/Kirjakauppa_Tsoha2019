@@ -17,7 +17,7 @@ class User(db.Model):
 
     books = db.relationship("Book", secondary='shopping_cart')
     roles = db.relationship("Role", secondary='user_role')
-    orders = db.relationship("Order", backref='account', lazy=True)
+    orders = db.relationship("Order", backref="account", cascade="delete", lazy=True)
 
     def __init__(self, name, e_mail, address, username, password):
         self.name = name

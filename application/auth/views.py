@@ -70,3 +70,14 @@ def user_edit():
  
         return redirect(url_for("books_index"))
     return render_template('auth/edit.html', form=form)
+
+@app.route("/user/delete/", methods=["POST"])
+@login_required()
+def user_delete():
+    id = request.args.get("user_id")
+    user = User.query.get(id)
+    db.session().delete(user)
+
+    db.session().commit()
+
+    return redirect(url_for("index"))

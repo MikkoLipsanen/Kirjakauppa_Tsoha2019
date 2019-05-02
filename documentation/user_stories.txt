@@ -27,6 +27,14 @@ username, password) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?, ?, ?)
 
 SQL-kysely: INSERT INTO user_role (account_id, role_id) VALUES (?, ?);
 
+-Rekisteröityneenä käyttäjänä voin poistaa oman käyttäjäprofiilini
+
+SQL-kysely:DELETE FROM account WHERE account.id = ?;
+
+-Rekisteröityneenä käyttäjänä voin päivittää käyttäjäprofiilini tietoja
+
+SQL-kysely (esim. kun päivitetään osoitetietoja): UPDATE account SET date_modified=CURRENT_TIMESTAMP, address=? WHERE account.id = ?;
+
 -Työntekijnä voin muokata tietokantaan talletettujen kirjojen saatavuustietoja.
 
 SQL-kysely: UPDATE book SET amount=?, available=? WHERE book.id = ?;
