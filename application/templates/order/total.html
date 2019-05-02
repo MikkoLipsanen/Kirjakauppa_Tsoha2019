@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="text-center">
+  <h1 class="h1 mb-1 font-weight-normal">Kaikki tilaukset</h1>
+  <br>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>Tilaustunnus</th>
+        <th>Tilaaja</th>
+        <th>Tilattu</th>
+        <th>Hinta</th>
+        <th>Poista tilaus</th>
+      </tr>
+    </thead>
+    {% for order in orders %}
+    <tbody>
+      <tr>
+        <td>{{ order.id }}</td>
+        <td>{{ order.name }}</td>
+        <td>{{ order.date.strftime("%d.%m.%Y") }}</td>
+        <td>{{ order.price }}</td>
+        <td>
+          <form method="POST" action="{{ url_for('order_delete', order_id=order.id) }}">
+              <input type="submit" class="btn btn-outline-danger" value="Poista">
+          </form>
+        </td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

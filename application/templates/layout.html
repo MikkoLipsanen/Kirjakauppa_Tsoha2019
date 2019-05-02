@@ -35,6 +35,7 @@
               {% if current_user.is_authenticated and current_user.has_role('ADMIN') %}
                 <a class="dropdown-item" href="{{ url_for('books_form') }}">Lisää kirja</a>
                 <a class="dropdown-item" href="{{ url_for('users_index') }}">Käyttäjälista</a>
+                <a class="dropdown-item" href="{{ url_for('order_list') }}">Tilauslista</a>
               {% endif %}
             </div>
           </li>

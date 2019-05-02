@@ -41,3 +41,20 @@ def order_index():
     size = len(orders)
     price = sum(Order.price for Order in orders)
     return render_template("order/list.html", orders=orders, form=form, size=size, sum=format(price, '.2f'))
+
+@app.route("/orders/list", methods=['GET'])
+@login_required(role="ADMIN")
+def order_list():
+    form = OrdersForm(request.form)
+    orders = Order.query.all()
+    return render_template("order/total.html", orders=orders, form=form)
+
+@app.route("/orders/delete/<order_id>/", methods=["POST"])
+@login_required(role="ADMIN")
+def order_delete(order_id):
+    order = Order.query.get(order_id)
+    db.session().delete(order)
+
+    db.session().commit()
+
+    return redirect(url_for("order_list"))

@@ -11,6 +11,7 @@ class OrderForm(FlaskForm):
 
 class OrdersForm(FlaskForm):
     id = IntegerField("Tunnus", [validators.DataRequired(message='Pakollinen kenttä')])
+    name = StringField("Nimi", [validators.DataRequired(message='Pakollinen kenttä')])
     date = DateTimeField("Tilattu", [validators.DataRequired(message='Pakollinen kenttä')])
     price = DecimalField("Hinta", [validators.DataRequired(message='Pakollinen kenttä')])
 

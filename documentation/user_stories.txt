@@ -58,6 +58,17 @@ FROM account WHERE account.id = ?;
 SELECT role.id AS role_id, role.name AS role_name FROM role, user_role 
 WHERE ? = user_role.account_id AND role.id = user_role.role_id;
 
+-Työntekijänä voin taskastella listaa kaikista tehdyistä tilauksista.
+
+SQL-kysely: SELECT "order".id AS order_id, "order".date AS order_date, 
+"order".name AS order_name, "order".e_mail AS order_e_mail, "order".address 
+AS order_address, "order".price AS order_price, "order".user_id AS order_user_id 
+FROM "order" WHERE ? = "order".user_id;
+
+-Työntekijänä voin poistaa tilauksen tietokannasta.
+
+SQL-kysely: DELETE FROM "order" WHERE "order".id = ?;
+
 -Asiakkaana voin lisätä kirjoja ostoskoriin.
 
 SQL-kysely: INSERT INTO shopping_cart (book_id, account_id) VALUES (?, ?);

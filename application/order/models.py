@@ -6,6 +6,8 @@ from datetime import date
 
 class Order(db.Model):
 
+    __tablename__ = 'order'
+
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime, server_default=func.now())
     name = db.Column(db.String(144), nullable=False)
@@ -13,9 +15,8 @@ class Order(db.Model):
     address = db.Column(db.String(200), nullable=False)
     price = db.Column(db.Float, nullable=False)
 
-    user_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('account.id'))
 
-    user = db.relationship("User", back_populates='orders')
     books = db.relationship("Book", secondary='order_item')
 
     def __init__(self, name, e_mail, address, price):
@@ -35,7 +36,9 @@ class Order(db.Model):
         return res
 
 class OrderItem(db.Model):
+
     __tablename__ = 'order_item'
+
     book_id = db.Column(db.Integer, db.ForeignKey('book.id'), primary_key=True)
     order_id = db.Column(db.Integer, db.ForeignKey('order.id'), primary_key=True)
 
