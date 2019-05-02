@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="text-center">
+  <h1 class="h1 mb-1 font-weight-normal">Rekisteröityneet käyttäjät</h1>
+  <br>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>Nimi</th>
+        <th>Sähköposti</th>
+        <th>Osoite</th>
+        <th>Käyttäjätunnus</th>
+        <th>Rooli</th>
+        <th>Tilaukset</th>
+      </tr>
+    </thead>
+    {% for user in users %}
+    <tbody>
+      <tr>
+        <td>{{ user.name }}</td>
+        <td>{{ user.e_mail }}</td>
+        <td>{{ user.address }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.roles[0].name }}</td>
+        <td>{{ user.orders|length }}</td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

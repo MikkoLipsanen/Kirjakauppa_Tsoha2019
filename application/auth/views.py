@@ -77,7 +77,13 @@ def user_delete():
     id = request.args.get("user_id")
     user = User.query.get(id)
     db.session().delete(user)
-
     db.session().commit()
 
-    return redirect(url_for("index"))
+    return redirect(url_for("books_index"))
+
+@app.route("/users", methods=['GET'])
+@login_required(role="ADMIN")
+def users_index():
+    users = User.query.all()
+    form = UserForm(request.form)
+    return render_template("auth/list.html", users=users, form=form)
