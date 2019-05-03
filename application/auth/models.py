@@ -44,7 +44,7 @@ class User(db.Model):
 
     @staticmethod
     def registrations_per_day():
-        stmt = text("SELECT COUNT(id) AS registrations, DATE(date_created) AS date FROM account GROUP BY DATE(account.date_created)")
+        stmt = text("SELECT COUNT(id) AS registrations, date_created AS date FROM account GROUP BY DATE(account.date_created)")
         res = db.engine.execute(stmt)
 
         return res
