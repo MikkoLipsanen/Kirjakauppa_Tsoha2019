@@ -40,7 +40,7 @@
   <br>
   {% for item in list %}
   <div class="list-group">
-    <a class="list-group-item"><b class="text-primary">{{ '{:.10}'.format(item.date) }}: {{ item.registrations }} kpl</b></a>
+    <a class="list-group-item"><b class="text-primary">{{ item.date }}: {{ item.registrations }} kpl</b></a>
   </div>
   {% endfor %}
 </div>
