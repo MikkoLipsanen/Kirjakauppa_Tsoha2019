@@ -104,7 +104,9 @@ kirjojen tarkastelu on mahdollista myös ilman sisäänkirjautumista.
 Valitsemalla käyttäjän rooliksi *Työntekijä*, tulee yläpalkin valikon kautta mahdolliseksi lisätä uusi kirja tietokantaan. 
 Kun lomakkeelle täytetään kirjan tiedot, tulee kirja näkyville muiden kirjojen joukkoon *Kirjalista*-näkymään. Täällä
 työntekijällä on myös mahdollisuus poistaa kirjoja valikoimasta *Poista*-painikkeen avulla tai muuttaa valitun kirjan 
-saatavuutta *Muuta*-painikkeella.
+saatavuutta *Muuta*-painikkeella. Työntekijälle on myös mahdollista valita yläpalkin valikosta *Käyttäjälista*, joka mahdollistaa 
+rekisteröityneiden käyttäjien tietojen tarkastelun sekä käyttäjäprofiilien poistamisen. *Tilauslista*-sivulla puolestaan voi
+tutkia ja poistaa asiakkaiden tekemiä tilauksia.
 
 Kaikilla käyttäjillä on mahdollista *Kirjalista*-näkymässä hakea haluttua kirjaa joko kirjan tai kirjailijan nimen perusteella. 
 Hakukriteeri valitaan pudotusvalikosta ja haku näyttää kaikki annettun merkkijonon sisältävät vaihtoehdot.
@@ -120,7 +122,7 @@ Käyttäjätunnus: **hello**
 Salasana: **world**
 
 
-[Projektin alustava UML-kaavio](documentation/tietokantakaavio.jpg)
+[Projektin UML-kaavio](documentation/tietokantakaavio.jpg)
 
 [Tietokantataulut](documentation/db_tables.txt)
 
