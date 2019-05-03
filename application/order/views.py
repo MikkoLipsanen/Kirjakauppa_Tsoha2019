@@ -53,7 +53,7 @@ def order_list():
         average = price / len(orders)
     else:
         average = 0
-    return render_template("order/total.html", orders=orders, form=form, sum=price, avg=average)
+    return render_template("order/total.html", orders=orders, form=form, sum=format(price, '.2f'), avg=format(average, '.2f'))
 
 @app.route("/orders/delete/<order_id>/", methods=["POST"])
 @login_required(role="ADMIN")
