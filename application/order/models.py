@@ -14,7 +14,6 @@ class Order(db.Model):
     e_mail = db.Column(db.String(144), nullable=False)
     address = db.Column(db.String(200), nullable=False)
     price = db.Column(db.Float, nullable=False)
-
     user_id = db.Column(db.Integer, db.ForeignKey('account.id'))
 
     books = db.relationship("Book", secondary='order_item')
@@ -34,7 +33,14 @@ class Order(db.Model):
         res = db.engine.execute(stmt)
 
         return res
+    
+    @staticmethod
+    def registrations_per_day():
+        stmt = text("SELECT COUNT(date_created) AS registrations, date_created AS datetime FROM account GROUP BY DATE(date_created)")
+        res = db.engine.execute(stmt)
 
+        return res
+     
 class OrderItem(db.Model):
 
     __tablename__ = 'order_item'

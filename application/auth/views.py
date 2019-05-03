@@ -86,4 +86,4 @@ def user_delete():
 def users_index():
     users = User.query.all()
     form = UserForm(request.form)
-    return render_template("auth/list.html", users=users, form=form)
+    return render_template("auth/list.html", users=users, form=form, list=User.registrations_per_day())

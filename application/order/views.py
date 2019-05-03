@@ -1,5 +1,6 @@
 from flask import redirect, render_template, request, url_for, flash
 from flask_login import login_required, current_user
+from sqlalchemy.sql import func
 
 from application import app, db, login_required
 from application.books.models import Book
@@ -47,7 +48,12 @@ def order_index():
 def order_list():
     form = OrdersForm(request.form)
     orders = Order.query.all()
-    return render_template("order/total.html", orders=orders, form=form)
+    price = sum(Order.price for Order in orders)
+    if len(orders) > 0:
+        average = price / len(orders)
+    else:
+        average = 0
+    return render_template("order/total.html", orders=orders, form=form, sum=price, avg=average)
 
 @app.route("/orders/delete/<order_id>/", methods=["POST"])
 @login_required(role="ADMIN")

@@ -1,6 +1,7 @@
 from application import db
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy import ForeignKey, Table, Column, Integer
+from sqlalchemy.sql import text
 
 class User(db.Model):
 
@@ -40,6 +41,13 @@ class User(db.Model):
     
     def has_role(self, role):
         return any(user_role.name == role for user_role in self.roles)
+
+    @staticmethod
+    def registrations_per_day():
+        stmt = text("SELECT COUNT(date_created) AS registrations, date_created AS date FROM account GROUP BY DATE(date_created)")
+        res = db.engine.execute(stmt)
+
+        return res
 
 
 user_role = db.Table('user_role',

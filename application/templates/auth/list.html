@@ -35,5 +35,13 @@
     </tbody>
     {% endfor %}
   </table>
+  <br>
+  <h3 class="h3 mb-3 font-weight-normal">Uusien käyttäjien määrä:</h2>
+  <br>
+  {% for item in list %}
+  <div class="list-group">
+    <a class="list-group-item"><b class="text-primary">{{ '{:.10}'.format(item.date) }}: {{ item.registrations }} kpl</b></a>
+  </div>
+  {% endfor %}
 </div>
 {% endblock %}
