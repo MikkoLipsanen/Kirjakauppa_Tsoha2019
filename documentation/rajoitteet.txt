@@ -1,0 +1,16 @@
+Sovelluksen rajoitteet ja puuttuvat ominaisuudet
+
+Osin harjoitustyöluonteensa vuoksi sovellus ei tällaisenaan soveltuisi käytettäväksi varsinaisena verkkokauppana.
+Esimerkiksi nyt käyttäjä pystyy rekisteröitymisen yhteydessä valitsemaan itse käyttäjä/työntekijä-roolin, ja
+myös muuttamaan tätä milloin vain. Oikeassa verkkokaupassa asia toteutettaisiin luonnollisesti toisin, ja 
+esim. työntekijän rekisteröityminen ja siihen liittyvät tunnistautumiset olisi varmaankin eriytetty selvästi.
+
+Tällä hetkellä sovelluksen perustoiminnallisuuksissa ei ole mielestäni suuria puutteita. Ehkä keskeisimpänä
+mieleen tulee tällä hetkellä puuttuva mahdollisuus lisätä useampi kappale samaa tuotetta ostoskoriin ja samaan
+tilaukseen. Tätä yritettiin toteuttaa myös pajaohjaajan avustuksella ilman suurempia tietokantatauluihin tehtäviä
+mutoksia, mutta se osoittautui yllättävän hankalaksi. Niinpä mahdollisuus jäi tällä erää sovelluksesta puuttumaan.
+
+Tuotevalikoimaa olisi toki voinut kasvattaa esim. kategorioiden kautta, ja kirjoillekin tuoda mukaan lisäattribuutteja.
+Toteutuksessa on kuitenkin keskitytty suhteellisen rajattuun tietomäärään.
+
+ 

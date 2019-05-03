@@ -126,4 +126,4 @@ Salasana: **world**
 
 [Käyttötapauksia](documentation/user_stories.txt)
 
-     
+[Rajoitteita ja puuttuvia ominaisuuksia](documentation/rajoitteet.txt)     
