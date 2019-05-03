@@ -58,6 +58,10 @@ FROM account WHERE account.id = ?;
 SELECT role.id AS role_id, role.name AS role_name FROM role, user_role 
 WHERE ? = user_role.account_id AND role.id = user_role.role_id;
 
+-Työntekijänä voin tarkastella listaa uusien käyttäjien rekisteröinneistä päiväkohtaisesti
+
+SQL-kysely: SELECT COUNT(date_created) AS registrations, date_created AS date FROM account GROUP BY DATE(date_created);
+
 -Työntekijänä voin taskastella listaa kaikista tehdyistä tilauksista.
 
 SQL-kysely: SELECT "order".id AS order_id, "order".date AS order_date, 
